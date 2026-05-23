@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<title>FB Token Commenter ~ Ayan 3:)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&family=Teko:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0f172a;--bg2:#1e293b;--card:#1e293b;--border:#334155;--txt:#f1f5f9;--txt2:#94a3b8;--acc:#3b82f6;--acc2:#2563eb;--green:#22c55e;--red:#ef4444;--orange:#f59e0b;--purple:#8b5cf6;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;}
+::-webkit-scrollbar{width:5px;height:5px;}::-webkit-scrollbar-thumb{background:var(--acc);border-radius:4px;}
+.topbar{background:var(--card);border-bottom:1px solid var(--border);padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.brand{font-family:'Rajdhani',sans-serif;font-size:1.4rem;font-weight:700;display:flex;align-items:center;gap:.5rem;}
+.brand i{color:var(--acc);}
+.badge-tool{background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);color:var(--acc);padding:.2rem .75rem;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:1px;}
+.wrap{max-width:1200px;margin:0 auto;padding:1.5rem;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.25rem;}
+.card-title{font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;color:var(--acc);}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;display:flex;align-items:center;gap:1rem;transition:transform .25s,box-shadow .25s;}
+.stat-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(59,130,246,.15);}
+.stat-icon{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+.si-blue{background:linear-gradient(135deg,#3b82f6,#2563eb);box-shadow:0 4px 14px rgba(59,130,246,.35);}
+.si-green{background:linear-gradient(135deg,#22c55e,#16a34a);box-shadow:0 4px 14px rgba(34,197,94,.3);}
+.si-red{background:linear-gradient(135deg,#ef4444,#dc2626);box-shadow:0 4px 14px rgba(239,68,68,.3);}
+.si-purple{background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 4px 14px rgba(139,92,246,.3);}
+.si-orange{background:linear-gradient(135deg,#f59e0b,#d97706);box-shadow:0 4px 14px rgba(245,158,11,.3);}
+.stat-label{font-size:.7rem;font-family:'Teko',sans-serif;letter-spacing:2px;color:var(--txt2);text-transform:uppercase;}
+.stat-val{font-size:1.6rem;font-family:'Teko',sans-serif;font-weight:700;letter-spacing:1px;}
+label{display:block;font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--txt2);margin-bottom:.45rem;margin-top:.9rem;}
+label:first-child{margin-top:0;}
+input,textarea,select{width:100%;padding:.8rem 1rem;background:#0f172a;border:1px solid var(--border);border-radius:8px;color:var(--txt);font-family:'Inter',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s,box-shadow .2s;resize:vertical;}
+input:focus,textarea:focus,select:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(59,130,246,.12);}
+textarea{min-height:110px;}
+.mode-row{display:flex;gap:.5rem;margin-top:.45rem;}
+.mode-btn{flex:1;padding:.65rem;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--txt2);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;}
+.mode-btn.active{background:var(--acc);color:#fff;border-color:var(--acc);}
+.btn{width:100%;padding:.875rem;border:none;border-radius:8px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;gap:.5rem;transition:all .25s;margin-top:.75rem;}
+.btn:disabled{opacity:.5;cursor:not-allowed;}
+.btn-blue{background:var(--acc);color:#fff;box-shadow:0 4px 14px rgba(59,130,246,.3);}
+.btn-blue:hover:not(:disabled){background:var(--acc2);transform:translateY(-2px);}
+.btn-red{background:var(--red);color:#fff;}
+.btn-red:hover:not(:disabled){background:#dc2626;transform:translateY(-2px);}
+.btn-ghost{background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--txt2);}
+.btn-ghost:hover{background:rgba(255,255,255,.09);color:var(--txt);}
+.task-card{background:#0f172a;border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:.75rem;position:relative;overflow:hidden;}
+.task-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px;}
+.task-card.running::before{background:var(--green);}
+.task-card.stopped::before{background:var(--txt2);}
+.task-card.error::before{background:var(--red);}
+.task-card.logging_in::before{background:var(--orange);}
+.task-card.starting::before{background:var(--orange);}
+.task-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;flex-wrap:wrap;gap:.5rem;}
+.task-id{font-family:'Teko',sans-serif;font-size:1rem;letter-spacing:2px;color:var(--txt2);}
+.status-pill{padding:.25rem .75rem;border-radius:20px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;}
+.sp-running{background:rgba(34,197,94,.12);color:var(--green);border:1px solid rgba(34,197,94,.25);}
+.sp-stopped{background:rgba(148,163,184,.1);color:var(--txt2);border:1px solid rgba(148,163,184,.2);}
+.sp-error{background:rgba(239,68,68,.1);color:var(--red);border:1px solid rgba(239,68,68,.2);}
+.sp-logging_in,.sp-starting{background:rgba(245,158,11,.1);color:var(--orange);border:1px solid rgba(245,158,11,.2);}
+.task-meta{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;font-size:.8rem;color:var(--txt2);margin-bottom:.75rem;}
+.task-meta span{display:flex;align-items:center;gap:.3rem;}
+.task-meta i{color:var(--acc);}
+.log-box{background:#020617;border:1px solid #1e293b;border-radius:8px;padding:.75rem;max-height:160px;overflow-y:auto;font-family:monospace;font-size:.76rem;color:#94a3b8;}
+.log-line{padding:.15rem 0;border-bottom:1px solid #0f172a;}
+.log-line.ok{color:#86efac;}
+.log-line.err{color:#fca5a5;}
+.log-line.info{color:#93c5fd;}
+.task-btns{display:flex;gap:.5rem;margin-top:.75rem;}
+.tb{padding:.45rem .9rem;border-radius:8px;border:none;font-size:.78rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;display:flex;align-items:center;gap:.3rem;}
+.tb-stop{background:rgba(239,68,68,.1);color:var(--red);border:1px solid rgba(239,68,68,.2);}
+.tb-stop:hover{background:var(--red);color:#fff;}
+.tb-del{background:rgba(255,255,255,.04);color:var(--txt2);border:1px solid var(--border);}
+.tb-del:hover{background:rgba(239,68,68,.1);color:var(--red);}
+.empty{text-align:center;padding:2.5rem 1rem;color:var(--txt2);}
+.empty i{font-size:2rem;display:block;margin-bottom:.5rem;opacity:.3;}
+#toast{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.75rem 1.25rem;font-size:.85rem;font-weight:600;box-shadow:0 8px 28px rgba(0,0,0,.5);opacity:0;pointer-events:none;transform:translateY(10px);transition:all .3s;max-width:280px;}
+#toast.show{opacity:1;transform:translateY(0);pointer-events:auto;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;}
+@media(max-width:768px){.grid2,.grid4{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand"><i class="bi bi-key-fill"></i> FB Token Commenter</div>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <div class="badge-tool">TOKEN MODE</div>
+    <div style="font-size:.8rem;color:var(--txt2);" id="liveUptime">—</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="grid4" id="statsGrid">
+    <div class="stat-card"><div class="stat-icon si-blue"><i class="bi bi-list-task"></i></div><div><div class="stat-label">Total Tasks</div><div class="stat-val" id="sTasks">0</div></div></div>
+    <div class="stat-card"><div class="stat-icon si-green"><i class="bi bi-play-circle"></i></div><div><div class="stat-label">Running</div><div class="stat-val" id="sRunning">0</div></div></div>
+    <div class="stat-card"><div class="stat-icon si-purple"><i class="bi bi-chat-dots"></i></div><div><div class="stat-label">Total Sent</div><div class="stat-val" id="sSent">0</div></div></div>
+    <div class="stat-card"><div class="stat-icon si-red"><i class="bi bi-exclamation-triangle"></i></div><div><div class="stat-label">Errors</div><div class="stat-val" id="sErrors">0</div></div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title"><i class="bi bi-plus-circle-fill"></i> New Task</div>
+
+      <label>🎯 Target Post UID</label>
+      <input id="postId" placeholder="e.g. 1234567890_9876543210" type="text"/>
+
+      <label><i class="bi bi-key"></i> Access Tokens (one per line)</label>
+      <textarea id="tokens" placeholder="paste token 1 here&#10;paste token 2 here&#10;paste token 3 here..."></textarea>
+
+      <label>📝 Comments (one per line)</label>
+      <textarea id="comments" placeholder="Nice post!&#10;Great content 🔥&#10;Amazing!&#10;Love this ❤️"></textarea>
+
+      <label>🏷️ Prefix (optional)</label>
+      <input id="prefix" placeholder="e.g. Bot: " type="text"/>
+
+      <label>⏱️ Delay (seconds)</label>
+      <input id="delay" type="number" value="5" min="1" max="3600"/>
+
+      <label>🔄 Token Mode</label>
+      <div class="mode-row">
+        <button class="mode-btn active" id="m-multi" onclick="setMode('multi')"><i class="bi bi-collection"></i> Multi Token</button>
+        <button class="mode-btn" id="m-single" onclick="setMode('single')"><i class="bi bi-person"></i> Single Token</button>
+      </div>
+
+      <button class="btn btn-blue" id="startBtn" onclick="startTask()"><i class="bi bi-play-fill"></i> Start Task</button>
+      <button class="btn btn-ghost" onclick="loadStatus()"><i class="bi bi-arrow-clockwise"></i> Refresh</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="bi bi-activity"></i> Active Tasks</div>
+      <div id="taskList"><div class="empty"><i class="bi bi-inbox"></i><p>No tasks yet. Start one!</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+let mode = 'multi';
+let pollTimer;
+const appStart = Date.now();
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('m-multi').classList.toggle('active', m === 'multi');
+  document.getElementById('m-single').classList.toggle('active', m === 'single');
+}
+
+async function startTask() {
+  const postId    = document.getElementById('postId').value.trim();
+  const tokensRaw = document.getElementById('tokens').value.trim();
+  const commRaw   = document.getElementById('comments').value.trim();
+  const prefix    = document.getElementById('prefix').value.trim();
+  const delay     = document.getElementById('delay').value;
+
+  if (!postId)    return toast('❌ Enter Post UID');
+  if (!tokensRaw) return toast('❌ Enter at least one token');
+  if (!commRaw)   return toast('❌ Enter at least one comment');
+
+  const tokens   = tokensRaw.split('\n').map(s => s.trim()).filter(Boolean);
+  const comments = commRaw.split('\n').map(s => s.trim()).filter(Boolean);
+
+  const btn = document.getElementById('startBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span> Starting...';
+
+  try {
+    const r = await fetch('/api/start', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ postId, tokens, comments, prefix, delay: parseInt(delay), mode }),
+    });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error);
+    toast('✅ Task started! ID: ' + d.taskId);
+    loadStatus();
+  } catch (e) { toast('❌ ' + e.message); }
+  finally { btn.disabled = false; btn.innerHTML = '<i class="bi bi-play-fill"></i> Start Task'; }
+}
+
+async function stopTask(id) {
+  try {
+    await fetch('/api/stop', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ taskId: id }) });
+    toast('⏹ Task stopped'); loadStatus();
+  } catch (e) { toast('❌ ' + e.message); }
+}
+
+async function deleteTask(id) {
+  try {
+    await fetch('/api/task/' + id, { method: 'DELETE' });
+    toast('🗑️ Task removed'); loadStatus();
+  } catch (e) { toast('❌ ' + e.message); }
+}
+
+async function loadStatus() {
+  try {
+    const r = await fetch('/api/status');
+    const d = await r.json();
+    document.getElementById('sTasks').textContent   = d.totalTasks;
+    document.getElementById('sRunning').textContent = d.running;
+    document.getElementById('sSent').textContent    = d.totalSent;
+    document.getElementById('sErrors').textContent  = d.totalErrors;
+
+    const list = document.getElementById('taskList');
+    if (!d.tasks.length) {
+      list.innerHTML = '<div class="empty"><i class="bi bi-inbox"></i><p>No tasks yet. Start one!</p></div>';
+      return;
+    }
+    list.innerHTML = d.tasks.map(t => `
+      <div class="task-card ${t.status}">
+        <div class="task-head">
+          <div>
+            <div style="font-size:.72rem;color:var(--txt2);margin-bottom:.1rem;">TASK</div>
+            <div class="task-id">#${t.id}</div>
+          </div>
+          <span class="status-pill sp-${t.status}">${t.status}</span>
+        </div>
+        <div class="task-meta">
+          <span><i class="bi bi-bullseye"></i> ${esc(t.postId)}</span>
+          <span><i class="bi bi-key"></i> ${t.tokens} token${t.tokens > 1 ? 's' : ''}</span>
+          <span><i class="bi bi-clock"></i> ${esc(t.uptime)}</span>
+          <span><i class="bi bi-chat-dots"></i> ${t.sent} sent</span>
+          <span><i class="bi bi-exclamation-triangle"></i> ${t.errors} err</span>
+          <span><i class="bi bi-stopwatch"></i> ${t.delay}s delay</span>
+          ${t.prefix ? `<span><i class="bi bi-tag"></i> "${esc(t.prefix)}"</span>` : ''}
+          <span><i class="bi bi-shuffle"></i> ${t.mode}</span>
+        </div>
+        <div class="log-box">${(t.log || []).map(l => `<div class="log-line ${l.msg.startsWith('✅')?'ok':l.msg.startsWith('❌')||l.msg.startsWith('💥')?'err':'info'}">${esc(new Date(l.t).toLocaleTimeString())} ${esc(l.msg)}</div>`).join('') || '<div class="log-line info">Waiting for logs...</div>'}</div>
+        <div class="task-btns">
+          ${t.status === 'running' ? `<button class="tb tb-stop" onclick="stopTask('${t.id}')"><i class="bi bi-stop-fill"></i> Stop</button>` : ''}
+          <button class="tb tb-del" onclick="deleteTask('${t.id}')"><i class="bi bi-trash3"></i> Remove</button>
+        </div>
+      </div>`).join('');
+  } catch {}
+}
+
+function esc(s) { const d = document.createElement('div'); d.textContent = String(s||''); return d.innerHTML; }
+let _tt;
+function toast(msg) { const el = document.getElementById('toast'); el.textContent = msg; el.classList.add('show'); clearTimeout(_tt); _tt = setTimeout(() => el.classList.remove('show'), 2800); }
+
+// Uptime
+setInterval(() => {
+  const ms = Date.now() - appStart;
+  const s = Math.floor(ms/1000), m = Math.floor(s/60), h = Math.floor(m/60);
+  document.getElementById('liveUptime').textContent = h > 0 ? `${h}h ${m%60}m` : m > 0 ? `${m}m ${s%60}s` : `${s}s`;
+}, 1000);
+
+loadStatus();
+pollTimer = setInterval(loadStatus, 4000);
+</script>
+</body>
+</html>
